@@ -108,6 +108,11 @@ public class Main {
                 printable.csvPrintln(out);
 
                 i++;
+                if(i < totalInputs) {
+                    System.out.println("Please enter the information of the next input using the same format."); // Message telling the user to input more student information until they are "DONE"
+                    System.out.println("Position FirstName,LastName StudentID TeacherID Phone");
+                    System.out.println("Press Enter when you are done.");
+                }
             }
             out.close();
             System.out.println("Your file has been written");

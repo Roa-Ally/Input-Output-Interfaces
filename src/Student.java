@@ -27,7 +27,7 @@ class Student implements CSVPrintable {
     }
     public boolean setPosition(String position){
         if (!(position.matches("Student") || position.matches("Teacher") || position.matches("TA"))){
-            System.out.println("Error position must match \" Student, Teacher, or TA\"! Please try again");
+            System.out.println("Error position must match \"Student, Teacher, or TA\"! Please try again");
             return false;
         }
         return true;

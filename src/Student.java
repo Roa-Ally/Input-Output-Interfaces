@@ -88,13 +88,16 @@ class Student implements CSVPrintable {
         return true;
 
     }
-    public boolean setPhone(String position, String strPhone){
+    public boolean setPhone(String strPhone){
         if (strPhone.length() != 10){
             System.out.println("Error phone must be 10 digits");
             return false;
-        } else if () {
-            
-        }
+
+        }  return true;
+
+
+
+    }
 
     }
 

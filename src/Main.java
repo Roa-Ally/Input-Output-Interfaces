@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-
+        try {
         Student info = new Student();
         System.out.println("Hello how many inputs would you like to make?");
         System.out.println("Please enter a positive whole number.");
@@ -21,7 +21,7 @@ public class Main {
         System.out.println("Please enter " + totalInputs + " amount of inputs in the following format:" );
         System.out.println("Position FirstName,LastName StudentID TeacherID Phone");
         System.out.println("Press enter when you are done.");
-        try {
+
             PrintWriter out = new PrintWriter(new FileWriter("out.csv"));
 
 
@@ -79,16 +79,26 @@ public class Main {
                 }
 
                String strPhone = personalInfo[4];
-                if (!info.setPhone(position, phone)){
+                if (!info.setPhone(strPhone)){
                     failedInput = true;
+                    continue;
+                }
+                int tPhone;
+                long phone;
+                try {
+                    tPhone = Integer.parseInt(strPhone.substring(strPhone.length() - 4));
+                    phone = Long.parseLong(strPhone);
+
+                }catch(NumberFormatException ex){
+                    System.out.println("Error Phone Number must be number! Please try again");
                     continue;
                 }
 
                 CSVPrintable printable;
                 if (position.matches("Student")){
-                    printable = new Student(fName,lName,studentID,phone);
+                    printable = new Student(fName,lName,studentID, phone);
                 } else if (position.matches("Teacher")) {
-                    printable = new Teacher(fName,lName,teacherID,phone);
+                    printable = new Teacher(fName,lName,teacherID, tPhone);
                 }else{
                     printable = new TA(fName,lName,studentID,teacherID,phone);
                 }

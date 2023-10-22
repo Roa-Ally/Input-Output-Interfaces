@@ -6,11 +6,10 @@ class Student implements CSVPrintable {
     private int studentID;
 
     public Student(){
-
     }
     public Student(String fName, String lName, int studentID, long phone){
-        this.fName = fName;
-        this.lName = lName;
+        this.fName = fName.substring(0,1).toUpperCase() + fName.substring(1);
+        this.lName = lName.substring(0,1).toUpperCase() + lName.substring(1);
         this.studentID = studentID;
         this.phone = phone;
     }
@@ -18,38 +17,30 @@ class Student implements CSVPrintable {
     public String getName() {
         return fName + "," + lName;
     }
-
     @Override
     public int getID() {
         return studentID;
     }
-
     @Override
     public void csvPrintln(PrintWriter out) {
         out.println(getName()+ "," + getID() + "," + phone);
-
     }
     public boolean setPosition(String position){
-        if (position.matches("Student") || position.matches("Teacher") || position.matches("TA")){
+        if (!(position.matches("Student") || position.matches("Teacher") || position.matches("TA"))){
             System.out.println("Error position must match \" Student, Teacher, or TA\"! Please try again");
             return false;
         }
         return true;
     }
-
     public boolean setName(String name){
         for(int i = 0; i < name.length(); i++){
             if(Character.isDigit(name.charAt(i))){
                 System.out.println("Error name cannot contain digits! Please try again");
                 return false;
-            }else{
-               String capitalName = name.substring(0,1).toUpperCase() + name.substring(1);
-               name = capitalName;
             }
         }
         return true;
     }
-
     public boolean setId(String position, int studentID, int teacherID){
         if (position.matches("Teacher")){
             String strT = Integer.toString(teacherID);
@@ -83,10 +74,8 @@ class Student implements CSVPrintable {
                     return false;
                 }
             }
-
         }
         return true;
-
     }
     public boolean setPhone(String strPhone){
         if (strPhone.length() != 10){
@@ -94,13 +83,9 @@ class Student implements CSVPrintable {
             return false;
 
         }  return true;
-
-
-
     }
-
     }
 
 
 
-}
+

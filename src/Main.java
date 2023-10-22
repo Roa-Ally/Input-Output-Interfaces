@@ -10,14 +10,14 @@ public class Main {
         System.out.println("Hello how many inputs would you like to make?");
         System.out.println("Please enter a positive whole number.");
         Scanner scan = new Scanner(System.in);
-        int totalInputs = scan.nextInt();
-
-        if (totalInputs < 0){
+        int totalInputs;
+        totalInputs = scan.nextInt();
+        while(totalInputs < 0) {
             System.out.println("Error total number of input must be a positive number Please try again");
             totalInputs = scan.nextInt();
 
         }
-        String [] personalInfo = new String[totalInputs];
+
         System.out.println("Please enter " + totalInputs + " amount of inputs in the following format:" );
         System.out.println("Position FirstName,LastName StudentID TeacherID Phone");
         System.out.println("Press enter when you are done.");
@@ -26,19 +26,22 @@ public class Main {
 
 
             boolean failedInput = false;
+            int i = 0;
 
 
-            while (totalInputs >= personalInfo.length) {
+            while (i < totalInputs) {
+
 
                 if (failedInput) {
                     System.out.println("Please re-enter the information using the following format:");
                     System.out.println("Position FirstName,LastName StudentID TeacherID Phone");
                     System.out.println("Press Enter when you are done.");
                 }
-                String input = scan.next();
-                personalInfo = input.split(" ");
+                scan = new Scanner(System.in);
+                String input = scan.nextLine();
+                String [] personalInfo = input.split(" ");
 
-                if (input.length() != 5) {
+                if (personalInfo.length != 5) {
                     System.out.println("Error invalid format!");
                     failedInput = true;
                     continue;
@@ -96,7 +99,7 @@ public class Main {
 
                 CSVPrintable printable;
                 if (position.matches("Student")){
-                    printable = new Student(fName,lName,studentID, phone);
+                    printable = new Student(fName,lName,studentID,phone);
                 } else if (position.matches("Teacher")) {
                     printable = new Teacher(fName,lName,teacherID, tPhone);
                 }else{
@@ -104,9 +107,10 @@ public class Main {
                 }
                 printable.csvPrintln(out);
 
+                i++;
             }
             out.close();
-
+            System.out.println("Your file has been written");
 
         }catch(IOException e){
             e.printStackTrace();

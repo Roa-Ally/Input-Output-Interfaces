@@ -13,7 +13,7 @@ class Teacher implements CSVPrintable{
     }
     @Override
     public String getName() {
-        return fName + "," + lName;
+        return fName + " " + lName;
     }
 
     @Override

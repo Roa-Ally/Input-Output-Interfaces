@@ -15,8 +15,8 @@ class Student implements CSVPrintable {
     }
     @Override
     public String getName() {
-        return fName + "," + lName;
-    } // Getting name in the correct format of firstName,lastName
+        return fName + " " + lName;
+    }
     @Override
     public int getID() {
         return studentID;

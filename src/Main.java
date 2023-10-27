@@ -113,6 +113,7 @@ public class Main {
                     System.out.println("Position FirstName,LastName StudentID TeacherID Phone");
                     System.out.println("Press Enter when you are done.");
                 }
+                failedInput = false;
             }
             out.close(); // Closing the print
             System.out.println("Your file has been written"); // Letting you know the file has been written

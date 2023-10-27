@@ -12,8 +12,8 @@ class Teacher implements CSVPrintable{
         this.tPhone = tPhone;
     }
     @Override
-    public String getName() { // Getting name in the correct format of firstName,lastName
-        return fName + "," + lName;
+    public String getName() {
+        return fName + " " + lName;
     }
 
     @Override
